@@ -15,6 +15,7 @@
         Padding="6">
     <Border.Resources>
         <local:MemoryCardMarginConverter x:Key="MemoryCardMarginConverter"/>
+        <local:MemoryCardStatusConverter x:Key="MemoryCardStatusConverter" />
         <DrawingBrush x:Key="BackgroundTileBrush" TileMode="Tile" Stretch="Fill" Viewport="0 0 0.05 0.05">
             <DrawingBrush.Drawing>
                 <DrawingGroup>
@@ -31,13 +32,18 @@
                 </DrawingGroup>
             </DrawingBrush.Drawing>
         </DrawingBrush>
+        <Border x:Key="TurnedDownContent" BorderBrush="Red" BorderThickness="1" Padding="5">
+            <Rectangle Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}" 
+                   Height="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged}" 
+                   Fill="{StaticResource BackgroundTileBrush}">
+            </Rectangle>
+        </Border>
     </Border.Resources>
     <Border.Effect>
         <DropShadowEffect/>
     </Border.Effect>
     <Border.Margin>
-        <Binding Path="Margin" Converter="{StaticResource MemoryCardMarginConverter}">
-        </Binding>
+        <Binding Path="Margin" Converter="{StaticResource MemoryCardMarginConverter}"></Binding>
     </Border.Margin>
     <Border.OpacityMask>
         <VisualBrush>
@@ -51,10 +57,15 @@
             </VisualBrush.Visual>
         </VisualBrush>
     </Border.OpacityMask>
-    <Border BorderBrush="Red" BorderThickness="1" Padding="5">
-        <Rectangle Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}" 
-               Height="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged}" 
-               Fill="{StaticResource BackgroundTileBrush}">
-        </Rectangle>
-    </Border>
+    <Border.Child>
+        <ContentControl>
+            <ContentControl.Content>
+                <MultiBinding Converter="{StaticResource MemoryCardStatusConverter}">
+                    <Binding Path="Status" UpdateSourceTrigger="PropertyChanged"/>
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type local:MemoryCard}}"/>
+                </MultiBinding>
+            </ContentControl.Content>
+        </ContentControl>
+    </Border.Child>
+    
 </Border>

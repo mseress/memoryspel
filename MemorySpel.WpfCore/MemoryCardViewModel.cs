@@ -32,6 +32,21 @@
             }
         }
 
+        private MemoryCardStatus _status;
+
+        public MemoryCardStatus Status
+        {
+            get { return _status; }
+            set 
+            { 
+                if (_status != value)
+                {
+                    _status = value;
+                    this.OnPropertyChanged();
+                }
+            }
+        }
+
         public double WindowWidth { get; private set; }
 
         public double WindowHeight { get; private set; }
