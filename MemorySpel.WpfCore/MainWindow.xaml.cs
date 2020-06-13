@@ -16,7 +16,7 @@ namespace MemorySpel.WpfCore
         {
             InitializeComponent();
             this.NumberOfRows = 5;
-            this.NumberOfColumns = 5;
+            this.NumberOfColumns = 6;
             this.AddCards();
         }
 
@@ -28,11 +28,10 @@ namespace MemorySpel.WpfCore
                 for (int j = 0; j < this.NumberOfColumns; j++)
                 {                    
                     var card = new MemoryCard();    
-                    card.DataContext = new MemoryCardViewModel();
+                    card.DataContext = new MemoryCardViewModel(this.ActualWidth, this.ActualHeight, this.NumberOfRows, this.NumberOfColumns);
 
                     Grid.SetRow(card, i);
                     Grid.SetColumn(card, j);
-                    card.Margin = new Thickness(10);
                     this.MainGrid.Children.Add(card);
                 }
             }

@@ -14,6 +14,7 @@
         Background="LightYellow"
         Padding="6">
     <Border.Resources>
+        <local:MemoryCardMarginConverter x:Key="MemoryCardMarginConverter"/>
         <DrawingBrush x:Key="BackgroundTileBrush" TileMode="Tile" Stretch="Fill" Viewport="0 0 0.05 0.05">
             <DrawingBrush.Drawing>
                 <DrawingGroup>
@@ -34,6 +35,10 @@
     <Border.Effect>
         <DropShadowEffect/>
     </Border.Effect>
+    <Border.Margin>
+        <Binding Path="Margin" Converter="{StaticResource MemoryCardMarginConverter}">
+        </Binding>
+    </Border.Margin>
     <Border.OpacityMask>
         <VisualBrush>
             <VisualBrush.Visual>

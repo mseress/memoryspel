@@ -32,10 +32,26 @@
             }
         }
 
-        public MemoryCardViewModel()
+        public double WindowWidth { get; private set; }
+
+        public double WindowHeight { get; private set; }
+
+        public int NumberOfRows { get; private set; }
+
+        public int NumberOfColumns { get; private set; }
+
+        public int Margin { get; set; }
+
+        public MemoryCardViewModel(double windowWidth, double windowHeight, int numberOfRows, int numberOfColumns)
         {            
-            this.Height = 150;
-            this.Width = 200;
+            this.NumberOfRows = numberOfRows;
+            this.NumberOfColumns = numberOfColumns;
+            this.WindowHeight = windowHeight;
+            this.WindowWidth = windowWidth;
+            this.Margin = 10;
+
+            this.Width = this.WindowWidth / this.NumberOfColumns - this.Margin * 2;
+            this.Height = this.WindowHeight / this.NumberOfRows - this.Margin * 2;
         }
     }
 }
