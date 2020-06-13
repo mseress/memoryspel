@@ -20,7 +20,8 @@ namespace MemorySpel.WpfCore
                     var content = data.Item2.FindResource("TurnedDownContent");
                     return content;
                 case MemoryCardStatus.TurnedUp:
-                    throw new NotImplementedException();
+                    var viewModel = data.Item2.DataContext as MemoryCardViewModel;
+                    return viewModel.Content;
                 case MemoryCardStatus.Removed:
                     throw new NotImplementedException();
                 default:

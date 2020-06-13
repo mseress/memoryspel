@@ -1,4 +1,6 @@
-﻿namespace MemorySpel.WpfCore
+﻿using System.Windows;
+
+namespace MemorySpel.WpfCore
 {
     public class MemoryCardViewModel : ViewModel
     {
@@ -46,6 +48,8 @@
                 }
             }
         }
+
+        public UIElement Content { get; set; }
 
         public double WindowWidth { get; private set; }
 
