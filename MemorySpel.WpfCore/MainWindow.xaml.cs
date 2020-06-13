@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MemorySpel.WpfCore
 {
@@ -38,15 +26,29 @@ namespace MemorySpel.WpfCore
             for (int i = 0; i < this.NumberOfRows; i++)
             {
                 for (int j = 0; j < this.NumberOfColumns; j++)
-                {
-                    throw new NotImplementedException();
+                {                    
+                    var card = new MemoryCard();    
+                    card.DataContext = new MemoryCardViewModel();
+
+                    Grid.SetRow(card, i);
+                    Grid.SetColumn(card, j);
+                    card.Margin = new Thickness(10);
+                    this.MainGrid.Children.Add(card);
                 }
             }
         }
 
         private void SetupMainGrid()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < this.NumberOfRows; i++)
+            {
+                this.MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            }
+
+            for (int i = 0; i < this.NumberOfColumns; i++)
+            {
+                this.MainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            }
         }
     }
 }
