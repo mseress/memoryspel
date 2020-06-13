@@ -1,10 +1,55 @@
-﻿<Button x:Class="MemorySpel.WpfCore.MemoryCard"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MemorySpel.WpfCore"
-             mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="150">
-    <Image Source="/Images/card_back.png" Stretch="Fill"/>
-</Button>
+﻿<Border x:Class="MemorySpel.WpfCore.MemoryCard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:MemorySpel.WpfCore"
+        mc:Ignorable="d" 
+        d:DesignHeight="200" d:DesignWidth="150"
+        Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}" 
+        Height="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged}"
+        CornerRadius="5"
+        BorderThickness="1"        
+        BorderBrush="Black"
+        Background="LightYellow"
+        Padding="6">
+    <Border.Resources>
+        <DrawingBrush x:Key="BackgroundTileBrush" TileMode="Tile" Stretch="Fill" Viewport="0 0 0.05 0.05">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Geometry="M0,0L2,0 2,2 0,2z">
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="Red"></SolidColorBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="M0.3,0L2,0 .2,1 0,2.z">
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="LightYellow"></SolidColorBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </Border.Resources>
+    <Border.Effect>
+        <DropShadowEffect/>
+    </Border.Effect>
+    <Border.OpacityMask>
+        <VisualBrush>
+            <VisualBrush.Visual>
+                <Border 
+                    Background="Black"
+                    SnapsToDevicePixels="True"
+                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=Border}}"
+                    Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Border}}"
+                    Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Border}}" />
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Border.OpacityMask>
+    <Border BorderBrush="Red" BorderThickness="1" Padding="5">
+        <Rectangle Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}" 
+               Height="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged}" 
+               Fill="{StaticResource BackgroundTileBrush}">
+        </Rectangle>
+    </Border>
+</Border>
