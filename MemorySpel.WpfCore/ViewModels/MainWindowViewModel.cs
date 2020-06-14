@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MemorySpel.WpfCore.ViewModels
 {
@@ -26,5 +24,20 @@ namespace MemorySpel.WpfCore.ViewModels
         public TimeSpan? TotalTime { get; set; }
 
         public Difficulty Difficulty { get; set; }
+
+        private int _numberOfClicks;
+
+        public int NumberOfClicks
+        {
+            get { return _numberOfClicks; }
+            set 
+            { 
+                if (_numberOfClicks != value)
+                {
+                    _numberOfClicks = value;
+                    this.OnPropertyChanged();
+                }
+            }
+        }
     }
 }

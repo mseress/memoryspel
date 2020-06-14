@@ -6,14 +6,21 @@
         xmlns:views="clr-namespace:MemorySpel.WpfCore.Views"
         mc:Ignorable="d"
         Title="{StaticResource AppTitle}" ResizeMode="NoResize" WindowState="Maximized">
+    <Window.Resources>
+        <Style x:Key="StatisticsTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="20" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <StackPanel>
-                <TextBlock Text="{Binding Path=ElapsedTime, StringFormat=Elapsed time: {0}s}" />
+                <TextBlock Text="{Binding Path=ElapsedTime, StringFormat=Elapsed time: {0}s}" Style="{StaticResource StatisticsTextBlockStyle}" />
+                <TextBlock Text="{Binding Path=NumberOfClicks, StringFormat=Number of clicks so far: {0}}" Style="{StaticResource StatisticsTextBlockStyle}"/>
             </StackPanel>
         </Grid>
         <views:MemoryCards x:Name="MemoryCardsControl" Grid.Column="1"/>

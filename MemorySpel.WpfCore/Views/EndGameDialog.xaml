@@ -9,15 +9,17 @@
     <Window.Resources>
         <Style x:Key="EndGameDialogTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Margin" Value="30" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
-            <RowDefinition Height="100" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
         <TextBlock Text="Congratulations! You won!" FontSize="24" FontWeight="Bold" Style="{StaticResource EndGameDialogTextBlockStyle}" />
         <TextBlock Grid.Row="1" Text="{Binding Path=TotalTime, StringFormat=Elapsed time: {0}}" FontSize="16" Style="{StaticResource EndGameDialogTextBlockStyle}" />
+        <TextBlock Grid.Row="2" Text="{Binding Path=NumberOfClicks, StringFormat=Number of clicks: {0}}" FontSize="16" Style="{StaticResource EndGameDialogTextBlockStyle}" />
     </Grid>
 </Window>

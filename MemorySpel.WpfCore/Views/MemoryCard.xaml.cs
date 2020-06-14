@@ -1,4 +1,6 @@
 ﻿using MemorySpel.WpfCore.ViewModels;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MemorySpel.WpfCore.Views
@@ -17,6 +19,7 @@ namespace MemorySpel.WpfCore.Views
 
         private void Border_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            // flipping the card
             if (sender is MemoryCard memoryCard && memoryCard.DataContext is MemoryCardViewModel viewModel)
             {
                 if (viewModel.Status == MemoryCardStatus.TurnedDown)
@@ -28,6 +31,9 @@ namespace MemorySpel.WpfCore.Views
                     viewModel.Status = MemoryCardStatus.TurnedDown;
                 }
             }
+
+            // incrementing click count
+            (Application.Current.MainWindow as MainWindow).ViewModel.NumberOfClicks++;
         }
     }
 }
