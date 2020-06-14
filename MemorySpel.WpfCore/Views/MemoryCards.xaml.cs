@@ -1,4 +1,5 @@
 ﻿using MemorySpel.WpfCore.ViewModels;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -62,6 +63,28 @@ namespace MemorySpel.WpfCore.Views
             {
                 this.MainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             }
+        }
+
+        private void UserControl_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var turnedUpCards = this.ViewModel.Cards.Where(c => c.ViewModel.Status == MemoryCardStatus.TurnedUp).ToArray();
+            if (turnedUpCards.Count() == 2)
+            {
+                if (turnedUpCards[0].Tag == turnedUpCards[1].Tag)
+                {
+                    foreach (var card in turnedUpCards)
+                    {
+                        card.ViewModel.Status = MemoryCardStatus.Removed;
+                    }
+                }
+                else
+                {
+                    foreach (var card in turnedUpCards)
+                    {
+                        card.ViewModel.Status = MemoryCardStatus.TurnedDown;
+                    }
+                }
+            }            
         }
     }
 }

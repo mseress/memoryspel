@@ -8,6 +8,8 @@ namespace MemorySpel.WpfCore.Views
     /// </summary>
     public partial class MemoryCard : Border
     {
+        public MemoryCardViewModel ViewModel { get { return this.DataContext as MemoryCardViewModel; } }
+
         public MemoryCard()
         {
             InitializeComponent();

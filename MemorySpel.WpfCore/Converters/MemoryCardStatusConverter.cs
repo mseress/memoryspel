@@ -2,6 +2,7 @@
 using MemorySpel.WpfCore.Views;
 using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace MemorySpel.WpfCore.Converters
@@ -22,10 +23,11 @@ namespace MemorySpel.WpfCore.Converters
                     var content = data.Item2.FindResource("TurnedDownContent");
                     return content;
                 case MemoryCardStatus.TurnedUp:
-                    var viewModel = data.Item2.DataContext as MemoryCardViewModel;
-                    return viewModel.Content;
+                    return data.Item2.ViewModel.Content;
                 case MemoryCardStatus.Removed:
-                    throw new NotImplementedException();
+                    data.Item2.Visibility = Visibility.Hidden;
+                    data.Item2.IsEnabled = false;
+                    return data.Item2.ViewModel.Content;
                 default:
                     throw new NotImplementedException();
             }
