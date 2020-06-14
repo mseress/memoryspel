@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:MemorySpel.WpfCore"
         mc:Ignorable="d" 
-        d:DesignHeight="200" d:DesignWidth="150"
+        d:DesignHeight="499" d:DesignWidth="313"
         Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}" 
         Height="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged}"
         CornerRadius="5"
@@ -33,17 +33,11 @@
                 </DrawingGroup>
             </DrawingBrush.Drawing>
         </DrawingBrush>
-        <Rectangle x:Key="TurnedDownContent" Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}" 
-                   Height="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged}" 
-                   Fill="{StaticResource BackgroundTileBrush}">
-        </Rectangle>
+        <Rectangle x:Key="TurnedDownContent" Fill="{StaticResource BackgroundTileBrush}"/>
     </Border.Resources>
     <Border.Effect>
         <DropShadowEffect/>
     </Border.Effect>
-    <Border.Margin>
-        <Binding Path="Margin" Converter="{StaticResource MemoryCardMarginConverter}"></Binding>
-    </Border.Margin>
     <Border.OpacityMask>
         <VisualBrush>
             <VisualBrush.Visual>
