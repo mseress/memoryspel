@@ -1,7 +1,7 @@
-﻿using MemorySpel.WpfCore.ViewModels;
+using Memoryspel.WpfCore.ViewModels;
 using System.Windows;
 
-namespace MemorySpel.WpfCore.Views
+namespace Memoryspel.WpfCore.Views
 {
     /// <summary>
     /// Interaction logic for StartGameDialog.xaml

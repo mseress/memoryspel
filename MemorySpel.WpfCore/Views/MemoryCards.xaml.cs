@@ -1,10 +1,10 @@
-﻿using MemorySpel.WpfCore.ViewModels;
+using Memoryspel.WpfCore.ViewModels;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace MemorySpel.WpfCore.Views
+namespace Memoryspel.WpfCore.Views
 {
     /// <summary>
     /// Interaction logic for MemoryCards.xaml

@@ -1,4 +1,4 @@
-﻿using MemorySpel.WpfCore.Views;
+using Memoryspel.WpfCore.Views;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace MemorySpel.WpfCore.ViewModels
+namespace Memoryspel.WpfCore.ViewModels
 {
     public class MemoryCardsViewModel : ViewModel
     {

@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace MemorySpel.WpfCore.ViewModels
+namespace Memoryspel.WpfCore.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {

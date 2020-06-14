@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Media;
 
-namespace MemorySpel.WpfCore
+namespace Memoryspel.WpfCore
 {
     public static class RandomHelper
     {

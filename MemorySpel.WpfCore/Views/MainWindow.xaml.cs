@@ -1,9 +1,9 @@
-﻿using MemorySpel.WpfCore.ViewModels;
+using Memoryspel.WpfCore.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace MemorySpel.WpfCore.Views
+namespace Memoryspel.WpfCore.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

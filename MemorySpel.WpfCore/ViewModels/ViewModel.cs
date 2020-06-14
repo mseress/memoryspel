@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace MemorySpel.WpfCore.ViewModels
+namespace Memoryspel.WpfCore.ViewModels
 {
     /// <summary>
     /// Abstract class to be used for view model classes. Implements <see cref="INotifyPropertyChanged"/>.

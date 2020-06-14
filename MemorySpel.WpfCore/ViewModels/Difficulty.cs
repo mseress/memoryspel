@@ -1,4 +1,4 @@
-﻿namespace MemorySpel.WpfCore.ViewModels
+namespace Memoryspel.WpfCore.ViewModels
 {
     public enum Difficulty
     {

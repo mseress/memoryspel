@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace MemorySpel.WpfCore.Converters
+namespace Memoryspel.WpfCore.Converters
 {
     public class MemoryCardMarginConverter : IValueConverter
     {

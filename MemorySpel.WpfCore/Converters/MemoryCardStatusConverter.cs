@@ -1,11 +1,11 @@
-﻿using MemorySpel.WpfCore.ViewModels;
-using MemorySpel.WpfCore.Views;
+using Memoryspel.WpfCore.ViewModels;
+using Memoryspel.WpfCore.Views;
 using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace MemorySpel.WpfCore.Converters
+namespace Memoryspel.WpfCore.Converters
 {
     public class MemoryCardStatusConverter : IMultiValueConverter
     {

@@ -1,7 +1,7 @@
-﻿<Application x:Class="MemorySpel.WpfCore.App"
+<Application x:Class="Memoryspel.WpfCore.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MemorySpel.WpfCore"
+             xmlns:local="clr-namespace:Memoryspel.WpfCore"
              xmlns:clr="clr-namespace:System;assembly=mscorlib"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>

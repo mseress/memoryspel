@@ -1,6 +1,6 @@
-﻿using System.Windows;
+using System.Windows;
 
-namespace MemorySpel.WpfCore
+namespace Memoryspel.WpfCore
 {
     public static class WindowHelper
     {
