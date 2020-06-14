@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MemorySpel.WpfCore.Views"
+        xmlns:views="clr-namespace:MemorySpel.WpfCore.Views"
         mc:Ignorable="d"
         Title="Memoryspel - WPF Core" ResizeMode="NoResize" WindowState="Maximized">
-    <Grid x:Name="MainGrid">
-    </Grid>
+    <views:MemoryCards x:Name="MemoryCardsControl"/>
 </Window>
