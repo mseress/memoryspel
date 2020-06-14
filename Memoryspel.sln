@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemorySpel.WpfCore", "MemorySpel.WpfCore\MemorySpel.WpfCore.csproj", "{81323AFF-F73F-4F51-A335-4297E25B6E48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memoryspel.WpfCore", "Memoryspel.WpfCore\Memoryspel.WpfCore.csproj", "{81323AFF-F73F-4F51-A335-4297E25B6E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
