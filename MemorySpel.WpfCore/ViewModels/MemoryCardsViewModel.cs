@@ -22,9 +22,32 @@ namespace MemorySpel.WpfCore.ViewModels
 
         public MemoryCardsViewModel(int numberOfRows, int numberOfColumns)
         {
+            this.SetRowsAndColumns(numberOfRows, numberOfColumns);
+        }
+
+        public MemoryCardsViewModel(Difficulty difficulty)
+        {
+            switch (difficulty)
+            {
+                case Difficulty.Easy:
+                    this.SetRowsAndColumns(3, 4);
+                    break;
+                case Difficulty.Normal:
+                    this.SetRowsAndColumns(4, 6);
+                    break;
+                case Difficulty.Hard:
+                    this.SetRowsAndColumns(6, 12);
+                    break;
+                default:
+                    throw new NotImplementedException("Unknown difficulty");
+            }
+        }
+
+        private void SetRowsAndColumns(int numberOfRows, int numberOfColumns)
+        {
             this.NumberOfColumns = numberOfColumns;
-            this.NumberOfRows = numberOfRows;            
-        }        
+            this.NumberOfRows = numberOfRows;
+        }
 
         public void SetupCards()
         {

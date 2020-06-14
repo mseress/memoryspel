@@ -15,13 +15,7 @@ namespace MemorySpel.WpfCore.Views
         public MainWindow()
         {
             InitializeComponent();
-            this.MemoryCardsControl.DataContext = new MemoryCardsViewModel(6, 12);
             this.DataContext = new MainWindowViewModel();
-        }
-
-        protected override void OnContentRendered(EventArgs e)
-        {
-            base.OnContentRendered(e);
             var startGameDialog = new StartGameDialog();
             if (startGameDialog.ShowDialog() != true)
             {
@@ -33,6 +27,8 @@ namespace MemorySpel.WpfCore.Views
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.IsEnabled = true;
             timer.Tick += Timer_Tick;
+
+            this.MemoryCardsControl.DataContext = new MemoryCardsViewModel(this.ViewModel.Difficulty);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
