@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MemorySpel.WpfCore
+namespace MemorySpel.WpfCore.ViewModels
 {
     public class MemoryCardViewModel : ViewModel
     {

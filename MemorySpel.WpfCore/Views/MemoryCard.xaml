@@ -1,9 +1,10 @@
-﻿<Border x:Class="MemorySpel.WpfCore.MemoryCard"
+﻿<Border x:Class="MemorySpel.WpfCore.Views.MemoryCard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:MemorySpel.WpfCore"
+        xmlns:views="clr-namespace:MemorySpel.WpfCore.Views"
         mc:Ignorable="d" 
         d:DesignHeight="499" d:DesignWidth="313"
         Width="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}" 
@@ -57,7 +58,7 @@
                     <ContentControl.Content>
                         <MultiBinding Converter="{StaticResource MemoryCardStatusConverter}">
                             <Binding Path="Status" UpdateSourceTrigger="PropertyChanged"/>
-                            <Binding RelativeSource="{RelativeSource AncestorType={x:Type local:MemoryCard}}"/>
+                            <Binding RelativeSource="{RelativeSource AncestorType={x:Type views:MemoryCard}}"/>
                         </MultiBinding>
                     </ContentControl.Content>
                 </ContentControl>

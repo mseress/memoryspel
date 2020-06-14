@@ -1,6 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using MemorySpel.WpfCore.ViewModels;
+using System.Windows.Controls;
 
-namespace MemorySpel.WpfCore
+namespace MemorySpel.WpfCore.Views
 {
     /// <summary>
     /// Interaction logic for MemoryCard.xaml

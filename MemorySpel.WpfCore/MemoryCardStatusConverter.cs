@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MemorySpel.WpfCore.ViewModels;
+using MemorySpel.WpfCore.Views;
+using System;
 using System.Globalization;
 using System.Windows.Data;
 

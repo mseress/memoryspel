@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MemorySpel.WpfCore.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace MemorySpel.WpfCore
+namespace MemorySpel.WpfCore.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
