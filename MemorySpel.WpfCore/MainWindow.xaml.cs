@@ -54,14 +54,15 @@ namespace MemorySpel.WpfCore
                 }
             }
 
-            this.AddRandomContentsToCards();
+            this.SetupCardPairs();
         }
 
-        private void AddRandomContentsToCards()
+        private void SetupCardPairs()
         {
             for (int i = 0; i < this.Cards.Count; i += 2)
             {
                 this.AddRandomContentsToCardPair(this.Cards[i], this.Cards[i + 1]);
+                this.Cards[i].Tag = this.Cards[i + 1].Tag = i;
             }
 
             // TODO: randomize/shuffle the whole list and then update the grid
@@ -72,7 +73,8 @@ namespace MemorySpel.WpfCore
             var viewModel1 = card1.DataContext as MemoryCardViewModel;
             var viewModel2 = card2.DataContext as MemoryCardViewModel;
             var stackPanel1 = new StackPanel();            
-            var stackPanel2 = new StackPanel();            
+            var stackPanel2 = new StackPanel();
+            stackPanel1.VerticalAlignment = stackPanel2.VerticalAlignment = VerticalAlignment.Center;
             var numberOfShapes = _random.Next(1, 4);
             for (int i = 0; i < numberOfShapes; i++)
             {
