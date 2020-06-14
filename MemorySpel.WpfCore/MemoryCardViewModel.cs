@@ -4,6 +4,11 @@ namespace MemorySpel.WpfCore
 {
     public class MemoryCardViewModel : ViewModel
     {
+        /// <summary>
+        /// A heuristical good proportion for the sides of a card (width / height).
+        /// </summary>
+        private const double SIDE_PROPORTION = 313.0 / 499.0;
+
         private double _height;
 
         public double Height
@@ -59,7 +64,10 @@ namespace MemorySpel.WpfCore
 
         public int NumberOfColumns { get; private set; }
 
-        public int Margin { get; set; }
+        /// <summary>
+        /// The margin of a <see cref="MemoryCard"/> has to be at least this big.
+        /// </summary>
+        public int MinimumMargin { get; set; }
 
         public MemoryCardViewModel(double windowWidth, double windowHeight, int numberOfRows, int numberOfColumns)
         {            
@@ -67,10 +75,26 @@ namespace MemorySpel.WpfCore
             this.NumberOfColumns = numberOfColumns;
             this.WindowHeight = windowHeight;
             this.WindowWidth = windowWidth;
-            this.Margin = 10;
+            this.MinimumMargin = 10;
 
-            this.Width = this.WindowWidth / this.NumberOfColumns - this.Margin * 2;
-            this.Height = this.WindowHeight / this.NumberOfRows - this.Margin * 2;
+            // calculating the right size for the card
+            var maxWidthForCard = this.WindowWidth / this.NumberOfColumns - this.MinimumMargin * 2;
+            var maxHeightForCard = this.WindowHeight / this.NumberOfRows - this.MinimumMargin * 2;
+            if (maxHeightForCard <= maxWidthForCard)
+            {
+                this.Height = maxHeightForCard;
+                this.Width = this.Height * SIDE_PROPORTION;
+            }
+            else
+            {
+                this.Width = maxWidthForCard;
+                this.Height = Width / SIDE_PROPORTION;
+                if (this.Height > maxHeightForCard)
+                {
+                    this.Height = maxHeightForCard;
+                    this.Width = this.Height * SIDE_PROPORTION;
+                }
+            }
         }
     }
 }
