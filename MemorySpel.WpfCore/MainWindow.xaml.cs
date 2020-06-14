@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
@@ -70,7 +71,8 @@ namespace MemorySpel.WpfCore
         {
             var viewModel1 = card1.DataContext as MemoryCardViewModel;
             var viewModel2 = card2.DataContext as MemoryCardViewModel;
-            var stackPanel = new StackPanel();            
+            var stackPanel1 = new StackPanel();            
+            var stackPanel2 = new StackPanel();            
             var numberOfShapes = _random.Next(1, 4);
             for (int i = 0; i < numberOfShapes; i++)
             {
@@ -95,14 +97,39 @@ namespace MemorySpel.WpfCore
                     shape.Width = shape.Height = viewModel1.Width / 4;
                 }
 
-                // TODO: create 2 identical instances instead of reusing the same reference
                 shape.Fill = new SolidColorBrush(color);
                 shape.HorizontalAlignment = HorizontalAlignment.Center;
                 shape.Margin = new Thickness(8);
-                stackPanel.Children.Add(shape);
+                stackPanel1.Children.Add(shape);
+                stackPanel2.Children.Add(this.CopyShape(shape));
             }
             
-            viewModel1.Content = viewModel2.Content = stackPanel;
+            viewModel1.Content = stackPanel1;
+            viewModel2.Content = stackPanel2;
+        }
+
+        private Shape CopyShape(Shape shape)
+        {
+            Shape copiedShape = null;
+            if (shape is System.Windows.Shapes.Rectangle)
+            {
+                copiedShape = new System.Windows.Shapes.Rectangle();                
+            }
+            else if (shape is Ellipse)
+            {
+                copiedShape = new Ellipse();
+            }
+            else
+            {
+                throw new NotImplementedException("Unknown shape type.");
+            }
+
+            copiedShape.Fill = shape.Fill;
+            copiedShape.Width = shape.Width;
+            copiedShape.Height = shape.Height;
+            copiedShape.HorizontalAlignment = shape.HorizontalAlignment;
+            copiedShape.Margin = shape.Margin;
+            return copiedShape;
         }
 
         private void SetupMainGrid()
