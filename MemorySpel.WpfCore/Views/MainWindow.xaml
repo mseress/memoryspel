@@ -12,16 +12,39 @@
             <Setter Property="Margin" Value="20" />
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <DrawingBrush TileMode="Tile" Stretch="Fill" Viewport="0 0 0.01 0.02">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Geometry="M0,0L2,0 2,2 0,2z">
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="LightGray"></SolidColorBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                    <GeometryDrawing Geometry="M0,0L1,0 1,1 0,1z">
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="WhiteSmoke"></SolidColorBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <StackPanel>
-                <TextBlock Text="{Binding Path=ElapsedTime, StringFormat=Elapsed time: {0}s}" Style="{StaticResource StatisticsTextBlockStyle}" />
-                <TextBlock Text="{Binding Path=NumberOfClicks, StringFormat=Number of clicks so far: {0}}" Style="{StaticResource StatisticsTextBlockStyle}"/>
-            </StackPanel>
+            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="8" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                <StackPanel>
+                    <TextBlock Text="{Binding Path=ElapsedTime, StringFormat=Elapsed time: {0} s}" Style="{StaticResource StatisticsTextBlockStyle}" />
+                    <TextBlock Text="{Binding Path=NumberOfClicks, StringFormat=Number of clicks so far: {0}}" Style="{StaticResource StatisticsTextBlockStyle}"/>
+                </StackPanel>
+                <Border.Effect>
+                    <DropShadowEffect />
+                </Border.Effect>
+            </Border>
         </Grid>
         <views:MemoryCards x:Name="MemoryCardsControl" Grid.Column="1"/>
     </Grid>
