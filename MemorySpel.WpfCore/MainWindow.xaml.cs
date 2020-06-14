@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -21,8 +18,6 @@ namespace MemorySpel.WpfCore
 
         public List<MemoryCard> Cards { get; set; }
 
-        private static readonly Random _random = new Random();
-
         public MainWindow()
         {
             InitializeComponent();
@@ -31,30 +26,38 @@ namespace MemorySpel.WpfCore
         protected override void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);
-            this.NumberOfRows = 5;
-            this.NumberOfColumns = 6;
-            this.AddCards();
+            this.NumberOfRows = 6;
+            this.NumberOfColumns = 12;
+            this.SetupMainGrid();
+            this.SetupCards();
         }
 
-        private void AddCards()
+        private void SetupCards()
         {
-            this.Cards = new List<MemoryCard>();
-            this.SetupMainGrid();
-            for (int i = 0; i < this.NumberOfRows; i++)
+            this.Cards = new List<MemoryCard>();                        
+            for (int i = 0; i < this.NumberOfRows * this.NumberOfColumns; i++)
             {
-                for (int j = 0; j < this.NumberOfColumns; j++)
-                {                    
-                    var card = new MemoryCard();
-                    card.DataContext = new MemoryCardViewModel(this.ActualWidth, this.ActualHeight, this.NumberOfRows, this.NumberOfColumns);
-
-                    Grid.SetRow(card, i);
-                    Grid.SetColumn(card, j);
-                    this.MainGrid.Children.Add(card);
-                    this.Cards.Add(card);
-                }
+                var card = new MemoryCard();
+                card.DataContext = new MemoryCardViewModel(this.ActualWidth, this.ActualHeight, this.NumberOfRows, this.NumberOfColumns);
+                this.Cards.Add(card);
             }
 
             this.SetupCardPairs();
+            this.AddCardsToGrid();
+        }
+
+        private void AddCardsToGrid()
+        {
+            for (int i = 0; i < this.NumberOfRows; i++)
+            {
+                for (int j = 0; j < this.NumberOfColumns; j++)
+                {
+                    var card = this.Cards[i * this.NumberOfColumns + j];
+                    Grid.SetRow(card, i);
+                    Grid.SetColumn(card, j);
+                    this.MainGrid.Children.Add(card);
+                }
+            }            
         }
 
         private void SetupCardPairs()
@@ -65,7 +68,7 @@ namespace MemorySpel.WpfCore
                 this.Cards[i].Tag = this.Cards[i + 1].Tag = i;
             }
 
-            // TODO: randomize/shuffle the whole list and then update the grid
+            this.Cards.Shuffle();
         }
 
         private void AddRandomContentsToCardPair(MemoryCard card1, MemoryCard card2)
@@ -75,19 +78,11 @@ namespace MemorySpel.WpfCore
             var stackPanel1 = new StackPanel();            
             var stackPanel2 = new StackPanel();
             stackPanel1.VerticalAlignment = stackPanel2.VerticalAlignment = VerticalAlignment.Center;
-            var numberOfShapes = _random.Next(1, 4);
+            var numberOfShapes = RandomHelper.Random.Next(1, 4);
             for (int i = 0; i < numberOfShapes; i++)
             {
-                var color = new System.Windows.Media.Color()
-                {
-                    A = 255,
-                    R = (byte)_random.Next(0, 256),
-                    G = (byte)_random.Next(0, 256),
-                    B = (byte)_random.Next(0, 256),
-                };
-
                 Shape shape = null;
-                if (_random.Next(0, 2) % 2 == 0)
+                if (RandomHelper.Random.Next(0, 2) % 2 == 0)
                 {                    
                     shape = new System.Windows.Shapes.Rectangle();                    
                     shape.Width = viewModel1.Width / 3;
@@ -99,7 +94,7 @@ namespace MemorySpel.WpfCore
                     shape.Width = shape.Height = viewModel1.Width / 4;
                 }
 
-                shape.Fill = new SolidColorBrush(color);
+                shape.Fill = new SolidColorBrush(RandomHelper.NextColor());
                 shape.HorizontalAlignment = HorizontalAlignment.Center;
                 shape.Margin = new Thickness(8);
                 stackPanel1.Children.Add(shape);
