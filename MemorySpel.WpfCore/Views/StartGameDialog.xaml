@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemorySpel.WpfCore.Views"
         mc:Ignorable="d"
-        Title="Memoryspel - WpfCore" Height="300" Width="500">
+        Title="Memoryspel - WpfCore" Height="300" Width="500"
+        ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="DifficultyButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="HorizontalAlignment" Value="Center" />

@@ -17,6 +17,7 @@ namespace MemorySpel.WpfCore.Views
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
             var startGameDialog = new StartGameDialog();
+            startGameDialog.CenterWindowOnScreen();
             if (startGameDialog.ShowDialog() != true)
             {
                 this.Close();
