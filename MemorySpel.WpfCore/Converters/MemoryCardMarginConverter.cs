@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace MemorySpel.WpfCore
+namespace MemorySpel.WpfCore.Converters
 {
     public class MemoryCardMarginConverter : IValueConverter
     {

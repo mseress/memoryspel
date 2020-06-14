@@ -4,7 +4,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace MemorySpel.WpfCore
+namespace MemorySpel.WpfCore.Converters
 {
     public class MemoryCardStatusConverter : IMultiValueConverter
     {

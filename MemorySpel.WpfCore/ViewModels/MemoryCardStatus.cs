@@ -1,4 +1,4 @@
-﻿namespace MemorySpel.WpfCore
+﻿namespace MemorySpel.WpfCore.ViewModels
 {
     public enum MemoryCardStatus
     {

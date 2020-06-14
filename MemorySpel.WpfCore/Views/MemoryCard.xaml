@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        xmlns:local="clr-namespace:MemorySpel.WpfCore"
+        xmlns:converters="clr-namespace:MemorySpel.WpfCore.Converters"
         xmlns:views="clr-namespace:MemorySpel.WpfCore.Views"
         mc:Ignorable="d" 
         d:DesignHeight="499" d:DesignWidth="313"
@@ -16,8 +16,8 @@
         Padding="6"
         MouseUp="Border_MouseUp">
     <Border.Resources>
-        <local:MemoryCardMarginConverter x:Key="MemoryCardMarginConverter"/>
-        <local:MemoryCardStatusConverter x:Key="MemoryCardStatusConverter" />
+        <converters:MemoryCardMarginConverter x:Key="MemoryCardMarginConverter"/>
+        <converters:MemoryCardStatusConverter x:Key="MemoryCardStatusConverter" />
         <DrawingBrush x:Key="BackgroundTileBrush" TileMode="Tile" Stretch="Fill" Viewport="0 0 0.05 0.05">
             <DrawingBrush.Drawing>
                 <DrawingGroup>
