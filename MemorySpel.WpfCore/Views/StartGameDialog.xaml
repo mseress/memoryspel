@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemorySpel.WpfCore.Views"
         mc:Ignorable="d"
-        Title="{StaticResource AppTitle}" Height="300" Width="500"
-        ResizeMode="NoResize">
+        Style="{StaticResource DialogStyle}">
     <Window.Resources>
         <Style x:Key="DifficultyButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="HorizontalAlignment" Value="Center" />

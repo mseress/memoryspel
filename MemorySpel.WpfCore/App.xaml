@@ -6,5 +6,11 @@
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         <clr:String x:Key="AppTitle">Memoryspel - WPF Core</clr:String>
+        <Style x:Key="DialogStyle" TargetType="{x:Type Window}">
+            <Setter Property="Height" Value="300" />
+            <Setter Property="Width" Value="500" />
+            <Setter Property="Title" Value="{StaticResource AppTitle}" />
+            <Setter Property="ResizeMode" Value="NoResize" />
+        </Style>
     </Application.Resources>
 </Application>

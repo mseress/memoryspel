@@ -84,7 +84,12 @@ namespace MemorySpel.WpfCore.Views
                         card.ViewModel.Status = MemoryCardStatus.TurnedDown;
                     }
                 }
-            }            
+            }
+
+            if (this.ViewModel.Cards.All(c => c.ViewModel.Status == MemoryCardStatus.Removed))
+            {
+                (Application.Current.MainWindow as MainWindow).EndGame();
+            }
         }
     }
 }

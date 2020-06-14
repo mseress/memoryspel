@@ -23,6 +23,8 @@ namespace MemorySpel.WpfCore.ViewModels
 
         public DateTime StartTime { get; set; }
 
+        public TimeSpan? TotalTime { get; set; }
+
         public Difficulty Difficulty { get; set; }
     }
 }

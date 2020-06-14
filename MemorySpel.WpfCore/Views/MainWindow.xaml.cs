@@ -12,10 +12,23 @@ namespace MemorySpel.WpfCore.Views
     {
         public MainWindowViewModel ViewModel { get { return this.DataContext as MainWindowViewModel; } }
 
+        public DispatcherTimer Timer { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
+            this.StartGame();
+            this.MemoryCardsControl.DataContext = new MemoryCardsViewModel(this.ViewModel.Difficulty);
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            this.ViewModel.ElapsedTime += TimeSpan.FromSeconds(1);
+        }
+
+        private void StartGame()
+        {
             var startGameDialog = new StartGameDialog();
             startGameDialog.CenterWindowOnScreen();
             if (startGameDialog.ShowDialog() != true)
@@ -24,17 +37,21 @@ namespace MemorySpel.WpfCore.Views
             }
 
             this.ViewModel.StartTime = DateTime.Now;
-            var timer = new DispatcherTimer(DispatcherPriority.Background);
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.IsEnabled = true;
-            timer.Tick += Timer_Tick;
-
-            this.MemoryCardsControl.DataContext = new MemoryCardsViewModel(this.ViewModel.Difficulty);
+            this.Timer = new DispatcherTimer(DispatcherPriority.Background);
+            this.Timer.Interval = TimeSpan.FromSeconds(1);
+            this.Timer.IsEnabled = true;
+            this.Timer.Tick += Timer_Tick;
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        public void EndGame()
         {
-            this.ViewModel.ElapsedTime += TimeSpan.FromSeconds(1);
-        }
+            this.ViewModel.TotalTime = DateTime.Now - this.ViewModel.StartTime;
+            this.Timer.Stop();            
+            var endGameDialog = new EndGameDialog();
+            endGameDialog.CenterWindowOnScreen();
+            endGameDialog.DataContext = this.DataContext;
+            endGameDialog.ShowDialog();
+            this.Close();
+        }                
     }
 }
